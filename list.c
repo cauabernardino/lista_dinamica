@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : Prompt.c
+ Name        : list.c
  Author      : Cauã Bernardino
  Version     : 0.1.0
  Copyright   : 
- Description : Hello World in C, Ansi-style
+ Description : Dynamic List and Bubble Sort
  ============================================================================
  */
 
@@ -95,8 +95,6 @@ int main(int argc, char * argv[])
         {
             add_first(&item, number);
         }
-
-        
 
     } 
     while (1);
