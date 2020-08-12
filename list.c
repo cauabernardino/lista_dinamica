@@ -12,19 +12,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Def structure for the linked list
+// Def structure for the linked list and vector
 typedef struct node 
 {
     int val;
     struct node * next;
 } 
 node;
+#define MAX 100
+int numbers[MAX];
 
 // Functions declarations
 void print_list(node * item);
 node * add_item(node * item, int val);
 void add_first(node ** item, int val);
 void free_mem(node * item);
+void sort(node * item);
 
 
 // Main function
@@ -63,6 +66,14 @@ int main(int argc, char * argv[])
             printf("\n");
             continue;
         } 
+
+        // Add value to the begin (first)
+        if (strncmp(input, "sort", 4) == 0)
+        {
+            sort(item);
+            printf("\n");
+            continue;
+        }
         
         scanf("%i", &number);
 
@@ -84,6 +95,8 @@ int main(int argc, char * argv[])
         {
             add_first(&item, number);
         }
+
+        
 
     } 
     while (1);
@@ -142,7 +155,8 @@ void add_first(node ** item, int val)
 
 
 // Free memory
-void free_mem(node * item) {
+void free_mem(node * item) 
+{
 
     node * current = item;
 
@@ -152,4 +166,40 @@ void free_mem(node * item) {
         free(item);
         item = current;
     }    
+}
+
+
+// Bubble sort (for simplicity due time)
+
+void sort(node * item) 
+{
+    node * current = item;
+    int n = 0;
+
+    while (current != NULL) 
+    {  
+        numbers[n] = current->val;
+        current = current->next;
+        n++;
+    }
+
+    int k, j, tmp;
+
+    for (k = 1; k < n; k++) 
+    {
+        for (j = 0; j < n - k; j++) {
+
+            if (numbers[j] > numbers[j + 1]) {
+                tmp = numbers[j];
+                numbers[j] = numbers[j + 1];
+                numbers[j + 1] = tmp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%i ", numbers[i]);
+    }
+
 }
