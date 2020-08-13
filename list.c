@@ -67,7 +67,7 @@ int main(int argc, char * argv[])
             continue;
         } 
 
-        // Add value to the begin (first)
+        // Print sorted list
         if (strncmp(input, "sort", 4) == 0)
         {
             sort(item);
@@ -185,9 +185,10 @@ void sort(node * item)
 
     for (k = 1; k < n; k++) 
     {
-        for (j = 0; j < n - k; j++) {
-
-            if (numbers[j] > numbers[j + 1]) {
+        for (j = 0; j < n - k; j++) 
+        {
+            if (numbers[j] > numbers[j + 1]) 
+            {
                 tmp = numbers[j];
                 numbers[j] = numbers[j + 1];
                 numbers[j + 1] = tmp;
@@ -199,5 +200,4 @@ void sort(node * item)
     {
         printf("%i ", numbers[i]);
     }
-
 }
